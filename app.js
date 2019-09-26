@@ -1,6 +1,7 @@
 //global vars
 var startBtn = document.getElementById("start-quiz-btn");
 var index = 0;
+var answer;
 
 
 //set up
@@ -50,6 +51,7 @@ function renderQuestion(){
    var question = document.getElementById("question-display"),
    choices = document.getElementById("multiple-choices");
    question.textContent = questions[index]["title"];
+   answer = questions[index]["answer"];
    randomArr = generateRandomArr();
    for (var i = 0; i < 4; i ++){
         var li = document.createElement("li");
@@ -92,13 +94,13 @@ document.addEventListener("click", function(event){
        
         
 
-        if (event.target.textContent == questions[index]["answer"]) {
+        if (event.target.textContent == answer) {
             console.log("you got it right!")
             var question = document.getElementById("question-display") 
             question.textContent= "";
             var  choices = document.getElementById("multiple-choices");
             while (choices.firstChild) {
-                myNode.removeChild(myNode.firstChild);
+                choices.removeChild(choices.firstChild);
             }
             renderQuestion();
         } else {
@@ -125,19 +127,19 @@ var questions = [
     },
     {
         title: "Which loop helps to iterate through arrays.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
+        choices: ["for", "curly brackets", "parentheses", "square brackets"],
+        answer: "for"
     },
     {
         title: "Which language is most commonly used for version control.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
+        choices: ["git", "curly brackets", "parentheses", "square brackets"],
+        answer: "git"
     },
     {
         title: "Which is the data type of the following: 'false' ?",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
-    },
+        choices: ["string", "curly brackets", "parentheses", "square brackets"],
+        answer: "string"
+    }
     
     ///etc.
 ];
