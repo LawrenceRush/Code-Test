@@ -2,6 +2,7 @@
 var startBtn = document.getElementById("start-quiz-btn");
 var enterBtn = document.getElementById("nameEnter");
 var scoreSpan = document.getElementById("score-span");
+var playAgain = document.getElementById("play-again");
 var index = 0;
 var answer;
 var questionNumber = 0;
@@ -71,25 +72,29 @@ function hidehighScore() {
 
 function hideFeedback() {
     var feedback = document.getElementById("feedback");
-    if (feedback.style.display === "none") {
-        feedback.style.display = "block";
-    } else {
+    
         feedback.style.display = "none";
     }
+function showFeedback(){
+    var feedback = document.getElementById("feedback");
+    feedback.style.display = "block";
 }
+
 function engagePositiveFeedback(){
     var feedback = document.getElementById("right/wrong");
     feedback.textContent = ("Right")
+    showFeedback();
     fInterval= setInterval(feedInterval, 1000)
-    feedbackCounter = 0;
+    
     
 }
 
 function engageNegativeFeedback(){
     var feedback = document.getElementById("right/wrong");
     feedback.textContent = ("Wrong")
+    showFeedback();
     fInterval = setInterval(feedInterval, 1000)
-    feedbackCounter = 0;
+    
     
 }
 
@@ -127,10 +132,13 @@ function renderQuestion(){
    
 }else {
     currentScore = totalTime - counter;
+    
+    //timer();
+    displayScore();
     clearInterval(interval);
     hideAllDone();
-    displayScore();
-    timer();
+    
+
 
 }
 
@@ -192,6 +200,10 @@ hideQuestion();
 renderQuestion();
 setTimer();
 });
+
+playAgain.addEventListener("click", function() {
+    location.reload();
+})
 
 enterBtn.addEventListener("click", function (){
     name = document.getElementById("name").value

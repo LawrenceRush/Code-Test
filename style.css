@@ -20,6 +20,7 @@ button{
    color: white;
    border: none;
    padding: 5px;
+   margin-bottom: 20px;
 }
 
 .answerLi{
@@ -38,6 +39,17 @@ button{
 
 .margin-bottom{
    margin-bottom: 10px;
+}
+
+
+button:hover {
+  background-color: rgb(233, 131, 233);
+  
+}
+
+.answerLi:hover {
+  background-color: rgb(233, 131, 233);
+  
 }
 
 
