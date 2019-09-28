@@ -13,11 +13,16 @@ var currentScore = 0;
 var name;
 var x;
 var y;
+var fInterval ;
+var eInterval;
 //set up
 var local = localStorage.getItem("highscores");
+var feedbackCounter = 0;
+
 
 highScores = JSON.parse(local);
 
+hideFeedback();
 hideQuestion();
 hideAllDone();
 hidehighScore();
@@ -71,9 +76,33 @@ function hideFeedback() {
     } else {
         feedback.style.display = "none";
     }
-function enageFeedback
-
 }
+function engagePositiveFeedback(){
+    var feedback = document.getElementById("right/wrong");
+    feedback.textContent = ("Right")
+    fInterval= setInterval(feedInterval, 1000)
+    feedbackCounter = 0;
+    
+}
+
+function engageNegativeFeedback(){
+    var feedback = document.getElementById("right/wrong");
+    feedback.textContent = ("Wrong")
+    fInterval = setInterval(feedInterval, 1000)
+    feedbackCounter = 0;
+    
+}
+
+function feedInterval (){
+    console.log("success")
+    hideFeedback();
+    feedbackCounter++;
+    if (feedbackCounter > 1) {
+        clearInterval(fInterval)
+    }
+   
+}
+
 function renderQuestion(){
              
 
@@ -170,7 +199,7 @@ enterBtn.addEventListener("click", function (){
         "name": name,
         "score": currentScore
     }
-        
+    
     
     highScores.push(obj);  
     hideAllDone();
@@ -194,10 +223,12 @@ document.addEventListener("click", function(event){
         if (event.target.textContent == answer) {
             console.log("you got it right!")
            
+            engagePositiveFeedback();
             renderQuestion();
         } else {
             console.log("you got it wrong!")
             counter = counter + 15;
+            engageNegativeFeedback();
             renderQuestion();
         }
 
@@ -223,18 +254,18 @@ var questions = [
         answer: "parentheses"
     },
     {
-        title: "Which loop helps to iterate through arrays.",
-        choices: ["for", "curly brackets", "parentheses", "square brackets"],
+        title: "Which loop helps to iterate through arrays?",
+        choices: ["for", "for in", "while", "if"],
         answer: "for"
     },
     {
-        title: "Which language is most commonly used for version control.",
-        choices: ["git", "curly brackets", "parentheses", "square brackets"],
+        title: "Which language is most commonly used for version control?",
+        choices: ["git", "javascript", "css", "html"],
         answer: "git"
     },
     {
         title: "Which is the data type of the following: 'false' ?",
-        choices: ["string", "curly brackets", "parentheses", "square brackets"],
+        choices: ["string", "integer", "float", "boolean"],
         answer: "string"
     }
     
