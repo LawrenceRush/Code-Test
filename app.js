@@ -1,6 +1,7 @@
 //global vars
 var startBtn = document.getElementById("start-quiz-btn");
 var enterBtn = document.getElementById("nameEnter");
+var scoreSpan = document.getElementById("score-span");
 var index = 0;
 var answer;
 var questionNumber = 0;
@@ -10,7 +11,13 @@ var interval;
 var highScores = [];
 var currentScore = 0;
 var name;
+var x;
+var y;
 //set up
+var local = localStorage.getItem("highscores");
+
+highScores = JSON.parse(local);
+
 hideQuestion();
 hideAllDone();
 hidehighScore();
@@ -45,6 +52,7 @@ function hideAllDone() {
     } else {
         allDonePage.style.display = "none";
     }
+    
 }
 
 function hidehighScore() {
@@ -82,6 +90,8 @@ function renderQuestion(){
     currentScore = totalTime - counter;
     clearInterval(interval);
     hideAllDone();
+    displayScore();
+    timer();
 
 }
 
@@ -103,6 +113,8 @@ function timer (){
     if (counter < totalTime) {
     counter++;
     var timeDisplay = document.getElementById("timeDisplay");
+        x = (Math.floor((totalTime - counter) / 60));
+        y = ((totalTime - counter) % 60)  
     timeDisplay.textContent = (Math.floor((totalTime - counter) / 60)) + ":" + ('0' + ((totalTime - counter) % 60)).slice(-2) ;
     } else {
         hideQuestion();
@@ -114,6 +126,21 @@ function timer (){
 function setTimer (){
      interval = setInterval(timer, 1000);
 
+}
+
+function displayScore (){
+    
+    scoreSpan.textContent = currentScore;
+}
+
+function renderHighScore () {
+ var highScoreDisplay = document.getElementById("high-scores");
+for (var score in highScores) {
+    var li = document.createElement("li")
+    li.textContent = (highScores[score]["name"] + ": " + highScores[score]["score"] )
+    
+    highScoreDisplay.appendChild(li);
+}
 }
 
 
@@ -133,9 +160,13 @@ enterBtn.addEventListener("click", function (){
         "name": name,
         "score": currentScore
     }
-    highScores.push({obj})
+        
+    
+    highScores.push(obj);  
     hideAllDone();
     hidehighScore();
+    renderHighScore();
+    localStorage.setItem('highscores', JSON.stringify(highScores));
 
 })
 
@@ -156,7 +187,7 @@ document.addEventListener("click", function(event){
             renderQuestion();
         } else {
             console.log("you got it wrong!")
-            counter = counter + 15
+            counter = counter + 15;
             renderQuestion();
         }
 
