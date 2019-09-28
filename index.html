@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="div" class = "top-corner">
+    <span>Time: </span>
+    <span id = "timeDisplay"></span>
+</div>
+
+<div id="challenge-page" class = "center">
+    <h1>Challenge!</h1>
+    <p>This quiz is very important. Take it serioulsy</p>
+    <button id = "start-quiz-btn">Start Quiz</button>
+</div>
+
+<div id="question-page" class = "center">
+    <h2 id = "question-display">Question?</h2>
+    <ol id = "multiple-choices"></ol>
+    
+</div>
+
+<div id="all-done-page" class = "center">
+    <h2 >All done</h2>
+    <span>Score: </span> <span id = "score-span">0</span>
+    <div class="margin-bottom"></div>
+    <span>Enter Your Name </span> <input id = "name"   type="text">
+    <div class = "margin-bottom"></div>
+    <button id= "nameEnter">Enter</button>
+</div>
+
+<div id="high-score-page" class = "center">
+    <h2>High Score!</h2>
+    <ol id = "high-scores">
+        
+    </ol>
+    <button id = "play-again">Play Again?</button>
+</div>
+
+<div id = "feedback" class = "center">
+    <div id = "decoration"></div>
+    <span>You're </span>   <span id = "right/wrong"></span>
+</div>
+    
+<script src="app.js">
+    
+</script>   
+</body>
+</html>

@@ -1,0 +1,56 @@
+.top-corner{
+   position:absolute;
+   top:0;
+   right:55px;
+}
+
+#decoration{
+   
+   height:2px;
+   background-color: grey; 
+}
+
+.center{
+   width: 50%;
+   margin: 0 auto;
+}
+
+button{
+   background-color: purple;
+   color: white;
+   border: none;
+   padding: 5px;
+   margin-bottom: 20px;
+}
+
+.answerLi{
+   background-color: purple;
+   color: white;
+   margin-bottom: 10px;
+   border-radius: 5%;
+   width: 30%;
+}
+
+#multiple-choices{
+   list-style-type:upper-alpha;
+   list-style-position: inside;
+
+}
+
+.margin-bottom{
+   margin-bottom: 10px;
+}
+
+
+button:hover {
+  background-color: rgb(233, 131, 233);
+  
+}
+
+.answerLi:hover {
+  background-color: rgb(233, 131, 233);
+  
+}
+
+
+
