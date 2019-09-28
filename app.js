@@ -64,6 +64,16 @@ function hidehighScore() {
     }
 }
 
+function hideFeedback() {
+    var feedback = document.getElementById("feedback");
+    if (feedback.style.display === "none") {
+        feedback.style.display = "block";
+    } else {
+        feedback.style.display = "none";
+    }
+function enageFeedback
+
+}
 function renderQuestion(){
              
 
